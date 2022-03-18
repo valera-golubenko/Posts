@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:posts/screens/posts/models/model_ui.dart';
 
-import 'interactor/post_interactor.dart';
+import 'post_interactor.dart';
 
 class HomeP extends StatefulWidget {
   const HomeP({Key? key}) : super(key: key);
@@ -20,7 +20,12 @@ class _HomePState extends State<HomeP> {
           stream: _interactor.stream,
           builder: (_, s) {
             _modelUI = s.data ?? _modelUI;
-            return Text(_modelUI.profile.name);
+            return InkWell(
+              onTap: () {
+                _interactor.toString();
+              },
+              child: Text(_modelUI.profile.name),
+            );
           }),
     );
   }
