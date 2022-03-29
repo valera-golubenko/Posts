@@ -20,13 +20,33 @@ class _HomePState extends State<HomeP> {
           stream: _interactor.stream,
           builder: (_, s) {
             _modelUI = s.data ?? _modelUI;
-            return InkWell(
-              onTap: () {
-                _interactor.toString();
-              },
-              child: Text(_modelUI.profile.name),
+            return SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(_modelUI.profile.name),
+                    ..._buildPosts(),
+                  ],
+                ),
+              ),
             );
           }),
     );
+  }
+
+  List<Widget> _buildPosts() {
+    return _modelUI.posts
+        .map((e) => Column(
+              children: [
+                Text(e.title),
+                ..._buildComments(e),
+              ],
+            ))
+        .toList();
+  }
+
+  List<Widget> _buildComments(PostUI e) {
+    return e.comments.map((e) => Text(e.body)).toList();
   }
 }

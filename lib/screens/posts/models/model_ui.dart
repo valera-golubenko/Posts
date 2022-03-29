@@ -27,5 +27,5 @@ class ProfUI {
   final String name;
 
   ProfUI(this.name);
-  factory ProfUI.empty() => ProfUI('Name is loading');
+  factory ProfUI.empty() => ProfUI('Empty name');
 }

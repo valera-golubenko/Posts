@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'model_ui.dart';
 
 part 'models.freezed.dart';
 part 'models.g.dart';
@@ -7,9 +10,10 @@ part 'models.g.dart';
 @freezed
 class DbModel with _$DbModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: true)
+  @HiveType(typeId: 1)
   const factory DbModel({
-    @JsonKey(name: 'posts') List<PostModel>? posts,
-    @JsonKey(name: 'profile') ProfileModel? profile,
+    @HiveField(0) @JsonKey(name: 'posts') List<PostModel>? posts,
+    @HiveField(1) @JsonKey(name: 'profile') ProfileModel? profile,
   }) = _DbModel;
 
   factory DbModel.fromJson(Map<String, dynamic> json) =>
@@ -19,10 +23,11 @@ class DbModel with _$DbModel {
 @freezed
 class PostModel with _$PostModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: true)
+  @HiveType(typeId: 2)
   const factory PostModel({
-    @JsonKey(name: 'id') int? id,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'coments') List<CommentModel>? coments,
+    @HiveField(0) @JsonKey(name: 'id') int? id,
+    @HiveField(1) @JsonKey(name: 'title') String? title,
+    @HiveField(2) @JsonKey(name: 'coments') List<CommentModel>? coments,
   }) = _PostModel;
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
@@ -32,10 +37,11 @@ class PostModel with _$PostModel {
 @freezed
 class CommentModel with _$CommentModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: true)
+  @HiveType(typeId: 3)
   const factory CommentModel({
-    @JsonKey(name: 'id') int? id,
-    @JsonKey(name: 'body') String? body,
-    @JsonKey(name: 'postId') int? postId,
+    @HiveField(0) @JsonKey(name: 'id') int? id,
+    @HiveField(1) @JsonKey(name: 'body') String? body,
+    @HiveField(2) @JsonKey(name: 'postId') int? postId,
   }) = _CommentModel;
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>
@@ -45,8 +51,9 @@ class CommentModel with _$CommentModel {
 @freezed
 class ProfileModel with _$ProfileModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: true)
+  @HiveType(typeId: 4)
   const factory ProfileModel({
-    @JsonKey(name: 'name') String? name,
+    @HiveField(0) @JsonKey(name: 'name') String? name,
   }) = _ProfileModel;
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>
@@ -100,4 +107,41 @@ class ProfileModelNetwork with _$ProfileModelNetwork {
 
   factory ProfileModelNetwork.fromJson(Map<String, dynamic> json) =>
       _$ProfileModelNetworkFromJson(json);
+}
+
+extension A2 on CommentModel {
+  CommentUI get toUI {
+    return CommentUI(
+      id ?? 0,
+      body ?? 'empty comment',
+      postId ?? 0,
+    );
+  }
+}
+
+extension A1 on PostModel {
+  PostUI get toUI {
+    return PostUI(
+      id ?? 0,
+      title ?? 'empty title',
+      (coments ?? []).map((e) => e.toUI).toList(),
+    );
+  }
+}
+
+extension ProfileToUI on ProfileModel {
+  ProfUI get toUI {
+    return ProfUI(
+      name ?? 'empty name',
+    );
+  }
+}
+
+extension A0 on DbModel {
+  DbUI get toUI {
+    return DbUI(
+      (posts ?? []).map((e) => e.toUI).toList(),
+      profile?.toUI ?? ProfUI('empty name'),
+    );
+  }
 }

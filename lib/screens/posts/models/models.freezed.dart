@@ -23,8 +23,8 @@ class _$DbModelTearOff {
   const _$DbModelTearOff();
 
   _DbModel call(
-      {@JsonKey(name: 'posts') List<PostModel>? posts,
-      @JsonKey(name: 'profile') ProfileModel? profile}) {
+      {@HiveField(0) @JsonKey(name: 'posts') List<PostModel>? posts,
+      @HiveField(1) @JsonKey(name: 'profile') ProfileModel? profile}) {
     return _DbModel(
       posts: posts,
       profile: profile,
@@ -41,8 +41,10 @@ const $DbModel = _$DbModelTearOff();
 
 /// @nodoc
 mixin _$DbModel {
+  @HiveField(0)
   @JsonKey(name: 'posts')
   List<PostModel>? get posts => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'profile')
   ProfileModel? get profile => throw _privateConstructorUsedError;
 
@@ -56,8 +58,8 @@ abstract class $DbModelCopyWith<$Res> {
   factory $DbModelCopyWith(DbModel value, $Res Function(DbModel) then) =
       _$DbModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'posts') List<PostModel>? posts,
-      @JsonKey(name: 'profile') ProfileModel? profile});
+      {@HiveField(0) @JsonKey(name: 'posts') List<PostModel>? posts,
+      @HiveField(1) @JsonKey(name: 'profile') ProfileModel? profile});
 
   $ProfileModelCopyWith<$Res>? get profile;
 }
@@ -105,8 +107,8 @@ abstract class _$DbModelCopyWith<$Res> implements $DbModelCopyWith<$Res> {
       __$DbModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'posts') List<PostModel>? posts,
-      @JsonKey(name: 'profile') ProfileModel? profile});
+      {@HiveField(0) @JsonKey(name: 'posts') List<PostModel>? posts,
+      @HiveField(1) @JsonKey(name: 'profile') ProfileModel? profile});
 
   @override
   $ProfileModelCopyWith<$Res>? get profile;
@@ -142,18 +144,21 @@ class __$DbModelCopyWithImpl<$Res> extends _$DbModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
+@HiveType(typeId: 1)
 class _$_DbModel implements _DbModel {
   const _$_DbModel(
-      {@JsonKey(name: 'posts') this.posts,
-      @JsonKey(name: 'profile') this.profile});
+      {@HiveField(0) @JsonKey(name: 'posts') this.posts,
+      @HiveField(1) @JsonKey(name: 'profile') this.profile});
 
   factory _$_DbModel.fromJson(Map<String, dynamic> json) =>
       _$$_DbModelFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'posts')
   final List<PostModel>? posts;
   @override
+  @HiveField(1)
   @JsonKey(name: 'profile')
   final ProfileModel? profile;
 
@@ -190,15 +195,18 @@ class _$_DbModel implements _DbModel {
 
 abstract class _DbModel implements DbModel {
   const factory _DbModel(
-      {@JsonKey(name: 'posts') List<PostModel>? posts,
-      @JsonKey(name: 'profile') ProfileModel? profile}) = _$_DbModel;
+          {@HiveField(0) @JsonKey(name: 'posts') List<PostModel>? posts,
+          @HiveField(1) @JsonKey(name: 'profile') ProfileModel? profile}) =
+      _$_DbModel;
 
   factory _DbModel.fromJson(Map<String, dynamic> json) = _$_DbModel.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'posts')
   List<PostModel>? get posts;
   @override
+  @HiveField(1)
   @JsonKey(name: 'profile')
   ProfileModel? get profile;
   @override
@@ -216,9 +224,9 @@ class _$PostModelTearOff {
   const _$PostModelTearOff();
 
   _PostModel call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'coments') List<CommentModel>? coments}) {
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'title') String? title,
+      @HiveField(2) @JsonKey(name: 'coments') List<CommentModel>? coments}) {
     return _PostModel(
       id: id,
       title: title,
@@ -236,10 +244,13 @@ const $PostModel = _$PostModelTearOff();
 
 /// @nodoc
 mixin _$PostModel {
+  @HiveField(0)
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'coments')
   List<CommentModel>? get coments => throw _privateConstructorUsedError;
 
@@ -254,9 +265,9 @@ abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'coments') List<CommentModel>? coments});
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'title') String? title,
+      @HiveField(2) @JsonKey(name: 'coments') List<CommentModel>? coments});
 }
 
 /// @nodoc
@@ -297,9 +308,9 @@ abstract class _$PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
       __$PostModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'coments') List<CommentModel>? coments});
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'title') String? title,
+      @HiveField(2) @JsonKey(name: 'coments') List<CommentModel>? coments});
 }
 
 /// @nodoc
@@ -337,22 +348,26 @@ class __$PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
+@HiveType(typeId: 2)
 class _$_PostModel implements _PostModel {
   const _$_PostModel(
-      {@JsonKey(name: 'id') this.id,
-      @JsonKey(name: 'title') this.title,
-      @JsonKey(name: 'coments') this.coments});
+      {@HiveField(0) @JsonKey(name: 'id') this.id,
+      @HiveField(1) @JsonKey(name: 'title') this.title,
+      @HiveField(2) @JsonKey(name: 'coments') this.coments});
 
   factory _$_PostModel.fromJson(Map<String, dynamic> json) =>
       _$$_PostModelFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id')
   final int? id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'title')
   final String? title;
   @override
+  @HiveField(2)
   @JsonKey(name: 'coments')
   final List<CommentModel>? coments;
 
@@ -391,20 +406,29 @@ class _$_PostModel implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   const factory _PostModel(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'coments') List<CommentModel>? coments}) = _$_PostModel;
+      {@HiveField(0)
+      @JsonKey(name: 'id')
+          int? id,
+      @HiveField(1)
+      @JsonKey(name: 'title')
+          String? title,
+      @HiveField(2)
+      @JsonKey(name: 'coments')
+          List<CommentModel>? coments}) = _$_PostModel;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$_PostModel.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id')
   int? get id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'title')
   String? get title;
   @override
+  @HiveField(2)
   @JsonKey(name: 'coments')
   List<CommentModel>? get coments;
   @override
@@ -422,9 +446,9 @@ class _$CommentModelTearOff {
   const _$CommentModelTearOff();
 
   _CommentModel call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'body') String? body,
-      @JsonKey(name: 'postId') int? postId}) {
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'body') String? body,
+      @HiveField(2) @JsonKey(name: 'postId') int? postId}) {
     return _CommentModel(
       id: id,
       body: body,
@@ -442,10 +466,13 @@ const $CommentModel = _$CommentModelTearOff();
 
 /// @nodoc
 mixin _$CommentModel {
+  @HiveField(0)
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'body')
   String? get body => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'postId')
   int? get postId => throw _privateConstructorUsedError;
 
@@ -461,9 +488,9 @@ abstract class $CommentModelCopyWith<$Res> {
           CommentModel value, $Res Function(CommentModel) then) =
       _$CommentModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'body') String? body,
-      @JsonKey(name: 'postId') int? postId});
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'body') String? body,
+      @HiveField(2) @JsonKey(name: 'postId') int? postId});
 }
 
 /// @nodoc
@@ -505,9 +532,9 @@ abstract class _$CommentModelCopyWith<$Res>
       __$CommentModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'body') String? body,
-      @JsonKey(name: 'postId') int? postId});
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'body') String? body,
+      @HiveField(2) @JsonKey(name: 'postId') int? postId});
 }
 
 /// @nodoc
@@ -546,22 +573,26 @@ class __$CommentModelCopyWithImpl<$Res> extends _$CommentModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
+@HiveType(typeId: 3)
 class _$_CommentModel implements _CommentModel {
   const _$_CommentModel(
-      {@JsonKey(name: 'id') this.id,
-      @JsonKey(name: 'body') this.body,
-      @JsonKey(name: 'postId') this.postId});
+      {@HiveField(0) @JsonKey(name: 'id') this.id,
+      @HiveField(1) @JsonKey(name: 'body') this.body,
+      @HiveField(2) @JsonKey(name: 'postId') this.postId});
 
   factory _$_CommentModel.fromJson(Map<String, dynamic> json) =>
       _$$_CommentModelFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id')
   final int? id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'body')
   final String? body;
   @override
+  @HiveField(2)
   @JsonKey(name: 'postId')
   final int? postId;
 
@@ -600,20 +631,23 @@ class _$_CommentModel implements _CommentModel {
 
 abstract class _CommentModel implements CommentModel {
   const factory _CommentModel(
-      {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'body') String? body,
-      @JsonKey(name: 'postId') int? postId}) = _$_CommentModel;
+      {@HiveField(0) @JsonKey(name: 'id') int? id,
+      @HiveField(1) @JsonKey(name: 'body') String? body,
+      @HiveField(2) @JsonKey(name: 'postId') int? postId}) = _$_CommentModel;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$_CommentModel.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id')
   int? get id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'body')
   String? get body;
   @override
+  @HiveField(2)
   @JsonKey(name: 'postId')
   int? get postId;
   @override
@@ -630,7 +664,7 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 class _$ProfileModelTearOff {
   const _$ProfileModelTearOff();
 
-  _ProfileModel call({@JsonKey(name: 'name') String? name}) {
+  _ProfileModel call({@HiveField(0) @JsonKey(name: 'name') String? name}) {
     return _ProfileModel(
       name: name,
     );
@@ -646,6 +680,7 @@ const $ProfileModel = _$ProfileModelTearOff();
 
 /// @nodoc
 mixin _$ProfileModel {
+  @HiveField(0)
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
 
@@ -660,7 +695,7 @@ abstract class $ProfileModelCopyWith<$Res> {
   factory $ProfileModelCopyWith(
           ProfileModel value, $Res Function(ProfileModel) then) =
       _$ProfileModelCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call({@HiveField(0) @JsonKey(name: 'name') String? name});
 }
 
 /// @nodoc
@@ -691,7 +726,7 @@ abstract class _$ProfileModelCopyWith<$Res>
           _ProfileModel value, $Res Function(_ProfileModel) then) =
       __$ProfileModelCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call({@HiveField(0) @JsonKey(name: 'name') String? name});
 }
 
 /// @nodoc
@@ -720,13 +755,15 @@ class __$ProfileModelCopyWithImpl<$Res> extends _$ProfileModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
+@HiveType(typeId: 4)
 class _$_ProfileModel implements _ProfileModel {
-  const _$_ProfileModel({@JsonKey(name: 'name') this.name});
+  const _$_ProfileModel({@HiveField(0) @JsonKey(name: 'name') this.name});
 
   factory _$_ProfileModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileModelFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'name')
   final String? name;
 
@@ -759,13 +796,14 @@ class _$_ProfileModel implements _ProfileModel {
 }
 
 abstract class _ProfileModel implements ProfileModel {
-  const factory _ProfileModel({@JsonKey(name: 'name') String? name}) =
-      _$_ProfileModel;
+  const factory _ProfileModel(
+      {@HiveField(0) @JsonKey(name: 'name') String? name}) = _$_ProfileModel;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$_ProfileModel.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'name')
   String? get name;
   @override

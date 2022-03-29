@@ -3,6 +3,161 @@
 part of 'models.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DbModelAdapter extends TypeAdapter<_$_DbModel> {
+  @override
+  final int typeId = 1;
+
+  @override
+  _$_DbModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_DbModel(
+      posts: (fields[0] as List?)?.cast<PostModel>(),
+      profile: fields[1] as ProfileModel?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_DbModel obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.posts)
+      ..writeByte(1)
+      ..write(obj.profile);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DbModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class PostModelAdapter extends TypeAdapter<_$_PostModel> {
+  @override
+  final int typeId = 2;
+
+  @override
+  _$_PostModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_PostModel(
+      id: fields[0] as int?,
+      title: fields[1] as String?,
+      coments: (fields[2] as List?)?.cast<CommentModel>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_PostModel obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.title)
+      ..writeByte(2)
+      ..write(obj.coments);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PostModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CommentModelAdapter extends TypeAdapter<_$_CommentModel> {
+  @override
+  final int typeId = 3;
+
+  @override
+  _$_CommentModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_CommentModel(
+      id: fields[0] as int?,
+      body: fields[1] as String?,
+      postId: fields[2] as int?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_CommentModel obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.body)
+      ..writeByte(2)
+      ..write(obj.postId);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CommentModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class ProfileModelAdapter extends TypeAdapter<_$_ProfileModel> {
+  @override
+  final int typeId = 4;
+
+  @override
+  _$_ProfileModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_ProfileModel(
+      name: fields[0] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_ProfileModel obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.name);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProfileModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
